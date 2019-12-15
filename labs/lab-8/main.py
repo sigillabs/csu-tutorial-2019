@@ -25,12 +25,6 @@ def main():
     .master("local[4]") \
     .getOrCreate()
 
-  schema = StructType([StructField("word", StringType())])
-  data = [['arg'],['barg']]
-
-  df = spark.createDataFrame(data, schema=schema)
-  df = df.rdd.map(mine.savior)
-
-  print(df.collect())
+  # Fill in here
 
 main()

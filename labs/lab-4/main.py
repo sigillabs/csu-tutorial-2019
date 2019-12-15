@@ -17,9 +17,6 @@ def main():
   conf = SparkConf().setAppName("words").setMaster("local[4]")
   context = SparkContext(conf=conf)
 
-  textFile = context.textFile("words.txt")
-  print(textFile.count())
-  filtered = textFile.filter(lambda word: word == 'aardvark')
-  print(filtered.count())
+  # Fill in here
 
 main()

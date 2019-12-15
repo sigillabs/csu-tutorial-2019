@@ -24,9 +24,6 @@ def main():
     .config('spark.hadoop.fs.s3a.secret.key', '') \
     .getOrCreate()
 
-  df = spark.read.format('parquet').load("s3a://csu-tutorial-labs/lab-6")
-  print(df.rdd.getNumPartitions())
-  df = df.select('word').where('word = "joy"')
-  print(df.rdd.getNumPartitions())
+  # Fill in here
 
 main()

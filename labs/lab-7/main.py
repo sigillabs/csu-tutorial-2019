@@ -12,9 +12,11 @@ def main():
 
   NOTE: Use Lambdas over new functions.
   NOTE: Use context.read.format('parquet').load(...) to read a parquet file.
+  NOTE: Make sure standalone spark cluster is running.
 
   See https://spark.apache.org/docs/latest/sql-getting-started.html for help.
   See https://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html for help.
+  See https://spark.apache.org/docs/latest/spark-standalone.html for help.
   """
 
   spark = SparkSession \
@@ -23,12 +25,6 @@ def main():
     .master("spark://127.0.1.1:7077") \
     .getOrCreate()
 
-  schema = StructType([StructField("word", StringType())])
-  data = [['arg'],['barg']]
-
-  df = spark.createDataFrame(data, schema=schema)
-  df = df.rdd.map(killer)
-
-  print(df.collect())
+  # Fill in here
 
 main()

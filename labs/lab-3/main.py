@@ -5,27 +5,25 @@ URI = "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?addr
 
 def save(response):
   """
-  Fill in this method.
+  Fill in this function.
 
   Save the text response to the file /tmp/endpoint.json.
 
   See https://realpython.com/read-write-files-python/#opening-and-closing-a-file-in-python
   """
 
-  with open('/tmp/endpoint.json', 'w') as f:
-    f.write(response)
+  pass
 
 def query(uri):
   """
-  Fill in this method.
+  Fill in this function.
 
   Query the passed URI and return the text response.
 
   See https://2.python-requests.org/en/master/
   """
 
-  response = requests.get(uri)
-  return response.text
+  pass
 
 def main():
   """
