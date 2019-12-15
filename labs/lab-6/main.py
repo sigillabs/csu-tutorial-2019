@@ -1,4 +1,4 @@
-from pyspark import SparkConf, SparkContext
+from pyspark.sql import SparkSession
 
 def main():
   """
@@ -13,11 +13,20 @@ def main():
   NOTE: Use context.read.format('parquet').load(...) to read a parquet file.
 
   See https://spark.apache.org/docs/latest/sql-getting-started.html for help.
+  See https://spark.apache.org/docs/2.1.0/api/python/pyspark.sql.html for help.
   """
 
-  conf = SparkConf().setAppName("words").setMaster("local[4]")
-  context = SparkContext(conf=conf)
+  spark = SparkSession \
+    .builder \
+    .appName("words") \
+    .master("local[4]") \
+    .config('spark.hadoop.fs.s3a.access.key', '') \
+    .config('spark.hadoop.fs.s3a.secret.key', '') \
+    .getOrCreate()
 
-  # Fill in here
+  df = spark.read.format('parquet').load("s3a://csu-tutorial-labs/lab-6")
+  print(df.rdd.getNumPartitions())
+  df = df.select('word').where('word = "joy"')
+  print(df.rdd.getNumPartitions())
 
 main()

@@ -3,6 +3,6 @@ def main():
   Fill in this function.
   """
 
-  pass
+  print("Hello World.")
 
 main()

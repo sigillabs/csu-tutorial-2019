@@ -1,4 +1,5 @@
 import sys
+import requests
 
 URI = "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=845%20Market%20St.%2C%20San%20Francisco%2C%20CA&benchmark=Public_AR_Current&vintage=Current_Current&layers=14&format=json"
 
@@ -11,7 +12,8 @@ def save(response):
   See https://realpython.com/read-write-files-python/#opening-and-closing-a-file-in-python
   """
 
-  return []
+  with open('/tmp/endpoint.json', 'w') as f:
+    f.write(response)
 
 def query(uri):
   """
@@ -22,7 +24,8 @@ def query(uri):
   See https://2.python-requests.org/en/master/
   """
 
-  return ''
+  response = requests.get(uri)
+  return response.text
 
 def main():
   """

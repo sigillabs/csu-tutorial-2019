@@ -4,9 +4,9 @@ def main():
   """
   Fill in this function.
 
-  1. Read the file /home/csu/tutorial/labs/words.txt into an RDD.
+  1. Read the file /home/csu/tutorial/labs/lab-4/words.txt into an RDD.
   2. Print the count of the number of words in the RDD.
-  3. Filter the RDD for similar words.
+  3. Filter the RDD for 'aardvark'.
   4. Print the count of the number words of words in the RDD.
 
   NOTE: Use Lambdas over new functions.
@@ -17,6 +17,9 @@ def main():
   conf = SparkConf().setAppName("words").setMaster("local[4]")
   context = SparkContext(conf=conf)
 
-  # Fill in here
+  textFile = context.textFile("words.txt")
+  print(textFile.count())
+  filtered = textFile.filter(lambda word: word == 'aardvark')
+  print(filtered.count())
 
 main()
